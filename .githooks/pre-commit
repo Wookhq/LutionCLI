@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# git config core.hooksPath .githooks  do this
 set -e
 
 ROOT=$(git rev-parse --show-toplevel)
