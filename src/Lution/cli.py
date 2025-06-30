@@ -4,8 +4,8 @@ from commands import about, sigma
 parser = argparse.ArgumentParser(prog="lution")
 subparsers = parser.add_subparsers(dest="command")
 
-about = subparsers.add_parser("about", help="Info about the app")
-about.set_defaults(func=about.run)
+aboutc = subparsers.add_parser("about", help="Info about the app")
+aboutc.set_defaults(func=about.run)
 
 sigmacm = subparsers.add_parser("SIGMA", help="Run sigma command")
 sigmacm.set_defaults(func=sigma.run)
