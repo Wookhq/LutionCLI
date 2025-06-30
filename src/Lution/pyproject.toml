@@ -1,0 +1,8 @@
+[project]
+name = "lutioncli"
+version = "0.2.3"
+description = "Lution CLI"
+dependencies = []
+
+[project.scripts]
+cli = "Lution.cli:main"
