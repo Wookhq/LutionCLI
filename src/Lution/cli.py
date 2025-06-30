@@ -1,5 +1,8 @@
 import argparse
+from modules.configcheck.VERSION import *
+
 parser = argparse.ArgumentParser()
-parser.add_argument("echo")
+parser.add_argument("about", help="about the app",)
 args = parser.parse_args()
-print(args.echo)
+if args.about:
+    print("verbosity turned on")
