@@ -1,7 +1,6 @@
 #src/Lution/modules/json/json.py
 import json
 import os
-import streamlit as st
 
 def ReadSoberConfig(key):
     """Read a top-level value from the Sober config (outside fflags)."""
@@ -11,8 +10,7 @@ def ReadSoberConfig(key):
             config = json.load(f)
         return config.get(key, None)
     except Exception as e:
-        st.error(f"Failed to read setting '{key}': {e}")
-        return None
+        return f"Failed to read setting '{key}': {e}"
 
 def ReadFflagsConfig(flag_name):
     """Read a value from the fflags section of the Sober config."""
@@ -23,8 +21,8 @@ def ReadFflagsConfig(flag_name):
         fflags = config.get("fflags", {})
         return fflags.get(flag_name, None)
     except Exception as e:
-        st.error(f"Failed to read fflag '{flag_name}': {e}")
-        return None
+        return f"Failed to read fflag '{flag_name}': {e}"
+
 def DeleteFflag(flag_name):
     """Delete a key from the fflags section of the Sober config."""
     file_path = os.path.expanduser("~/.var/app/org.vinegarhq.Sober/config/sober/config.json")
@@ -39,11 +37,9 @@ def DeleteFflag(flag_name):
                 json.dump(config, f, indent=4)
             return True
         else:
-            st.warning(f"Flag '{flag_name}' not found in fflags.")
-            return False
+            return f"Flag '{flag_name}' not found in fflags."
     except Exception as e:
-        st.error(f"Failed to delete fflag '{flag_name}': {e}")
-        return False
+        return f"Failed to delete fflag '{flag_name}': {e}"
 
 def UpdateFflags(flag_name, flag_value):
     file_path = os.path.expanduser("~/.var/app/org.vinegarhq.Sober/config/sober/config.json")
@@ -55,9 +51,9 @@ def UpdateFflags(flag_name, flag_value):
         sober_config["fflags"][flag_name] = flag_value
         with open(file_path, "w") as f:
             json.dump(sober_config, f, indent=4)
-        st.success(f"fflags['{flag_name}'] set to {flag_value}")
+            return f"fflags['{flag_name}'] set to {flag_value}"
     except Exception as e:
-        st.error(f"Failed to update fflags: {e}")
+            return f"Failed to update fflags: {e}"
 
 def UpdateSoberConfig(key, value):
     file_path = os.path.expanduser("~/.var/app/org.vinegarhq.Sober/config/sober/config.json")
@@ -67,9 +63,9 @@ def UpdateSoberConfig(key, value):
         config[key] = value
         with open(file_path, "w") as f:
             json.dump(config, f, indent=4)
-        st.success(f"Config['{key}'] set to {value}")
+        return f"Config['{key}'] set to {value}"
     except Exception as e:
-        st.error(f"Failed to update config: {e}")
+        return f"Failed to update config: {e}"
 
 def CombineJson(*json_objs):
     """
@@ -82,5 +78,6 @@ def CombineJson(*json_objs):
         if isinstance(obj, dict):
             result.update(obj)
         else:
-            st.warning(f"Skipped non-dict object in CombineJson: {type(obj)}")
+            return f"Skipped non-dict object in CombineJson: {type(obj)}"
+            continue
     return result
