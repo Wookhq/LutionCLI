@@ -7,16 +7,17 @@ def run(args):
         fflagscf = ReadSoberConfig("fflags")
         pretty = json.dumps(fflagscf,indent=4)
         print(pretty)
-    
-    if arg.rm :
-        fflag = args[0]
+        return
+
+    if args.rm :
+        fflag = args.rm[0]
         print(f"Deleting {fflag}")
         DeleteFflag(fflag)
+        return
 
-    if args.add is None or len(args.add) == 0: # if nothing retrun usage
+    if args.add is None or len(args.add) == 0:
         print("Usage: --add [fflag] [Value]")
         return
-    
     if len(args.add) >= 2:
         fflag = args.add[0]
         value = args.add[1]
@@ -24,5 +25,4 @@ def run(args):
         UpdateFflags(fflag, value)
         return
 
-
-print("Type help to see how to use fflag command")
+    print("Type help to see how to use fflag command")
