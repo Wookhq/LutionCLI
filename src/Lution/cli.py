@@ -1,7 +1,7 @@
 import argparse
 from commands import about, sigma, fflags
 
-parser = argparse.ArgumentParser(prog="lution")
+parser = argparse.ArgumentParser(prog="lutioncli")
 subparsers = parser.add_subparsers(dest="command")
 
 # the about command

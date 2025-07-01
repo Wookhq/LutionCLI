@@ -42,6 +42,13 @@ def run(args):
 
     #region preset
 
+    if args.preset and len(args.preset) > 0:
+        print("test yay")
+        return
+    else :
+        print("Usage : type lutioncli --preset to learn more")
+        return
+
 
 
 
