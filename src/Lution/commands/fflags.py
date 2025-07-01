@@ -14,15 +14,25 @@ def run(args):
         print(f"Deleting {fflag}")
         DeleteFflag(fflag)
         return
-        
+
     if args.add:
         if len(args.add) >= 2:
             fflag = args.add[0]
             value = args.add[1]
-            print(f"debug fflag: {fflag} = {value}")
+            print(f"Added : {fflag} = {value}")
             UpdateFflags(fflag, value)
         else:
             print("Usage: --add [fflag] [Value]")
+        return
+
+    if args.update:
+        if len(args.add) >= 2:
+            fflag = args.add[0]
+            value = args.add[1]
+            print(f"Updated : {fflag} = {value}")
+            UpdateFflags(fflag, value)
+        else:
+            print("Usage: --update [fflag] [Value]")
         return
 
     print("Type help to see how to use fflag command")
