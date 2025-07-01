@@ -1,4 +1,4 @@
-from modules.json.json import ReadSoberConfig
+from modules.json.json import ReadSoberConfig, UpdateFflags
 import json
 
 def run(args):
@@ -16,6 +16,7 @@ def run(args):
         fflag = args.add[0]
         value = args.add[1]
         print(f"debug fflag: {fflag} = {value}")
+        UpdateFflags(fflag, value)
         return
 
 
