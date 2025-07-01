@@ -15,8 +15,10 @@ sigmacm.set_defaults(func=sigma.run)
 # the fflags command
 fflagcm = subparsers.add_parser("fflags", help="Add/Remove/View fflags or use fflags preset")
 fflagcm.add_argument("view",nargs=argparse.REMAINDER, help="View all fflags")
+
 fflagcm.add_argument("--rm", nargs=argparse.REMAINDER, help="Remove a fflag.")
 fflagcm.add_argument("--add",nargs=argparse.REMAINDER, help="Add a fflag")
+fflagcm.add_argument("--update",nargs=argparse.REMAINDER, help="Update a fflag")
 
 
 fflagcm.add_argument("--preset", nargs=argparse.REMAINDER, help="Use fflags preset. Use it to see some preset you can use with")
