@@ -2,6 +2,8 @@ from modules.json.json import ReadSoberConfig, UpdateFflags, DeleteFflag
 import json
 
 def run(args):
+    # region view n stuff
+
     if args.view :
         print("All fflags in config.json :")
         fflagscf = ReadSoberConfig("fflags")
@@ -34,5 +36,14 @@ def run(args):
         else:
             print("Usage: --update [fflag] [Value]")
         return
+
+    # regionend
+
+
+    #region preset
+
+
+
+
 
     print("Type help to see how to use fflag command")
