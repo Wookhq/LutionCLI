@@ -1,4 +1,4 @@
-from modules.json.json import ReadSoberConfig, UpdateFflags
+from modules.json.json import ReadSoberConfig, UpdateFflags, DeleteFflag
 import json
 
 def run(args):
@@ -7,6 +7,11 @@ def run(args):
         fflagscf = ReadSoberConfig("fflags")
         pretty = json.dumps(fflagscf,indent=4)
         print(pretty)
+    
+    if arg.rm :
+        fflag = args[0]
+        print(f"Deleting {fflag}")
+        DeleteFflag(fflag)
 
     if args.add is None or len(args.add) == 0: # if nothing retrun usage
         print("Usage: --add [fflag] [Value]")
