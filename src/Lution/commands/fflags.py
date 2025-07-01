@@ -8,7 +8,7 @@ def run(args):
         pretty = json.dumps(fflagscf,indent=4)
         print(pretty)
 
-    if args.add is None or len(args.add) == 0 or len(args.add) == 1 : # if nothing retrun usage
+    if args.add is None or len(args.add) == 0: # if nothing retrun usage
         print("Usage: --add [fflag] [Value]")
         return
     
